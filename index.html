@@ -3,79 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>IM : MTM (90 : 10) — Visual explainer</title>
-  <style>
-    :root{
-      --bg:#0f1724; --card:#0b1220; --accent:#00c2a8; --muted:#9aa7b2; --white:#e6eef3; --gsec:#2b9df4; --cash:#f59e0b;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    body{background:linear-gradient(180deg,var(--bg),#071024);color:var(--white);margin:0;padding:32px;}
-    .wrap{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:420px 1fr;gap:24px;align-items:start}
-    header{grid-column:1/-1;margin-bottom:6px}
-    h1{margin:0;font-size:20px}
-    p.lead{color:var(--muted);margin:8px 0 18px}
-    .card{background:linear-gradient(180deg,var(--card),#07121a);padding:20px;border-radius:12px;box-shadow:0 6px 24px rgba(2,6,23,0.6);}
-    /* Donut */
-    .donut-wrap{text-align:center}
-    svg.donut{max-width:320px;margin:0 auto;display:block}
-    .legend{display:flex;justify-content:center;gap:16px;margin-top:12px}
-    .legend .item{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:14px}
-    .sw{width:14px;height:14px;border-radius:3px}
-    /* Details */
-    .details{display:flex;flex-direction:column;gap:12px}
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);font-size:13px}
-    .row{display:flex;justify-content:space-between;align-items:center}
-    .big{font-size:22px;color:var(--white);}
-    /* flow diagram */
-    .flow{display:flex;gap:12px;align-items:center;margin-top:12px}
-    .box{flex:1;padding:12px;border-radius:10px;background:linear-gradient(180deg,#071826,#082233);border:1px solid rgba(255,255,255,0.03);text-align:center}
-    .arrow{font-size:28px;color:var(--muted)}
-    .note{font-size:13px;color:var(--muted)}
-    /* footer */
-    footer{grid-column:1/-1;margin-top:18px;color:var(--muted);font-size:13px}
-    /* responsive */
-    @media (max-width:900px){.wrap{grid-template-columns:1fr;}.donut-wrap{order:0}}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <h1>IM : MTM</h1>
-      <p class="lead"><strong>Initial Margin (IM)</strong> and <strong>Mark‑to‑Market (MTM)</strong>. IM is satisfied primarily with Indian Government Securities (G‑Secs) which generates interest income in the form of coupon payments, MTM is typically held in cash.</p>
-    </header>
+  <title>IM : MTM Demo </title>
+  <meta name="description" content="Interactive demo showing how IM (Initial Margin) and MTM (Variation Margin) work — use G-Secs for IM to earn coupon income."/>
 
-    <section class="card donut-wrap">
-      <svg class="donut" viewBox="0 0 42 42" width="320" height="320" aria-hidden="true">
-        <!-- Background ring -->
-        <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="rgba(255,255,255,0.04)" stroke-width="6"></circle>
-        <!-- IM slice 90% -->
-        <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="var(--gsec)" stroke-width="6" stroke-dasharray="282.743,31.416" stroke-dashoffset="-25" transform="rotate(-90 21 21)"></circle>
-        <!-- MTM slice 10% -->
-        <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="var(--cash)" stroke-width="6" stroke-dasharray="31.416,282.743" stroke-dashoffset="0" transform="rotate(-90 21 21)"></circle>
-        <!-- Center label -->
-        <g transform="translate(21,21)">
-          <text x="0" y="1" text-anchor="middle" font-size="3.2" fill="var(--white)" font-weight="600">IM : MTM</text>
-          
-        </g>
-      </svg>
+<section class="card visual">
+      <div class="row"><div class="badge">Margin Structure</div><div class="badge"> </div></div>
 
-      <div class="legend">
-        <div class="item"><span class="sw" style="background:var(--gsec)"></span><div>IM — Indian Government Securities</div></div>
-        <div class="item"><span class="sw" style="background:var(--cash)"></span><div>MTM — Cash</div></div>
-      </div>
-
-      <div style="margin-top:14px;color:var(--muted);font-size:14px">Key point: <strong>IM </strong> can be provided as G‑Secs rather than cash while <strong>MTM </strong> remains in liquid cash to meet intraday variation needs.</div>
-    </section>
-
-    <section class="card details">
-      <div class="row"><div class="badge">Margin Structure</div><div class="badge">Scenario: Derivatives (Futures / Options)</div></div>
-
-      <div class="row"><div>Initial Margin (IM)</div><div class="big"> G‑Secs</div></div>
+      <div class="row"><div>Initial Margin (IM)</div><div class="arrow">→</div><div class="row"> G‑Secs</div></div>
       <div class="note">IM is typically calculated to cover potential future exposure. Using Indian government bonds (G‑Secs) as margin allows FPIs to post securities that also yield coupons at a risk free rate.</div>
 
       <div style="height:8px"></div>
 
-      <div class="row"><div>Mark‑to‑Market (MTM / Variation Margin)</div><div class="big"> Cash</div></div>
+      <div class="row"><div>Mark‑to‑Market (MTM)</div><div class="arrow">→</div><div class="row"> Cash</div></div>
       <div class="note">MTM covers day‑to‑day changes in market value and must remain highly liquid usually posted in cash.</div>
 
       <div class="flow" aria-hidden="true">
@@ -98,48 +37,142 @@
       <div style="margin-top:12px;color:var(--muted);font-size:13px">Note: When posting G‑Secs as IM, Central Counter Parties (CCPs) usually apply a haircut to account for market risk. Hence margins provided against G-secs are slightly reduced</div>
 
     </section>
+  <style>
+    :root{
+      --bg:#071326; --card:#071923; --muted:#9fb3c2; --accent:#00c2a8; --gsec:#2b9df4; --cash:#f59e0b; --glass: rgba(255,255,255,0.03);
+      --white:#e6eef3; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{background:linear-gradient(180deg,var(--bg),#031022);color:var(--white);margin:0;padding:28px;min-height:100vh}
+    .container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start}
+    header{grid-column:1/-1;margin-bottom:6px}
+    h1{margin:0;font-size:20px}
+    p.lead{color:var(--muted);margin:6px 0 18px;font-size:14px}
+    .card{background:linear-gradient(180deg,var(--card),#031b29);padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .visual{display:flex;flex-direction:column;align-items:center;gap:12px}
+    svg.donut{width:280px;height:280px}
+    .legend{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap}
+    .legend .item{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px}
+    .sw{width:14px;height:14px;border-radius:4px}
+    .controls{display:grid;gap:12px}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    .range-wrap{display:flex;gap:8px;align-items:center}
+    input[type="range"]{width:100%}
+    input[type="number"]{background:transparent;border:1px solid rgba(255,255,255,0.05);color:var(--white);padding:8px;border-radius:8px;width:100%}
+    .row{display:flex;gap:10px;align-items:center}
+    .muted{color:var(--muted);font-size:13px}
+    .big{font-size:20px;color:var(--white);font-weight:600}
+    .small{font-size:13px;color:var(--muted)}
+    .btn{background:var(--accent);border:none;padding:10px 12px;border-radius:8px;color:#042826;font-weight:700;cursor:pointer}
+    .flow{display:flex;gap:10px;align-items:center;margin-top:10px}
+    .flow .box{flex:1;padding:10px;border-radius:10px;background:linear-gradient(180deg,#06232d,#05242d);border:1px solid rgba(255,255,255,0.03);text-align:center}
+    footer{grid-column:1/-1;margin-top:18px;color:var(--muted);font-size:13px}
+    @media (max-width:980px){.container{grid-template-columns:1fr} .visual{order:1}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>IM : MTM Demo</h1>
+      <p class="lead">Initial Margin (IM)</strong> and <strong>Mark‑to‑Market (MTM)</strong>. IM is satisfied primarily with Indian Government Securities (G‑Secs) which generates interest income in the form of coupon payments, MTM is typically held in cash.</p>
+    </header>
 
-    <section class="card" style="grid-column:1/-1">
-      <h2 style="margin-top:0">Income Flow and Margin Efficiency</h2>
-      <p class="note">The diagram below depicts two scenarios: <br>(A) Traditional cash-dominant margining <br>(B) G‑Sec dominant IM (90%) + cash MTM (10%).</p>
 
-      <!-- Simple comparative bars -->
-      <svg viewBox="0 0 600 160" width="100%" height="200" style="background:transparent;margin-top:8px">
-        <!-- Labels -->
-        <text x="80" y="28" fill="var(--muted)" font-size="12">A. Cash-dominant (baseline)</text>
-        <rect x="80" y="36" width="342" height="22" rx="6" fill="#0b1a27" stroke="rgba(255,255,255,0.03)"></rect>
-        <rect x="80" y="36" width="342" height="22" rx="6" fill="rgba(255,255,255,0.03)"></rect>
-        <rect x="80" y="36" width="342" height="22" rx="6" fill="url(#cashGrad)"></rect>
 
-        <text x="80" y="84" fill="var(--muted)" font-size="12">B. IM = G‑Secs + MTM = Cash</text>
-        <!-- IM 90% bar -->
-        <rect x="80" y="92" width="342" height="22" rx="6" fill="var(--gsec)"></rect>
-        <!-- MTM 10% bar -->
-        <rect x="80" y="92" width="38" height="22" rx="6" fill="var(--cash)"></rect>
-
-        <!-- callouts -->
-        <text x="430" y="52" fill="var(--muted)" font-size="12">Cash posted as margin: 100% (low yield)</text>
-        <text x="430" y="108" fill="var(--muted)" font-size="12">IM = G‑Secs → coupon income </text>
-        <text x="430" y="124" fill="var(--muted)" font-size="12"> MTM = Cash → high liquidity </text>
-
-        <defs>
-          <linearGradient id="cashGrad" x1="0" x2="1">
-            <stop offset="0%" stop-color="rgba(245,158,11,0.9)" />
-            <stop offset="100%" stop-color="rgba(245,158,11,0.6)" />
-          </linearGradient>
-        </defs>
+    <section class="card visual">
+      <svg class="donut" viewBox="0 0 200 200">
+        <g transform="translate(100,100)">
+          <circle r="70" fill="transparent" stroke="rgba(255,255,255,0.05)" stroke-width="28"></circle>
+          <circle id="imArc" r="70" fill="transparent" stroke="var(--gsec)" stroke-width="28" stroke-linecap="round" transform="rotate(-90)"></circle>
+          <circle id="mtmArc" r="70" fill="transparent" stroke="var(--cash)" stroke-width="28" stroke-linecap="round" transform="rotate(-90)"></circle>
+          <text x="0" y="-6" text-anchor="middle" font-size="12" fill="var(--muted)">IM • MTM</text>
+          <text x="0" y="12" text-anchor="middle" font-size="18" fill="var(--white)" font-weight="700" id="ratioLabel">90 : 10</text>
+        </g>
       </svg>
-
-      <div style="margin-top:12px;color:var(--muted)">Income calculation (Example): <BR>Suppose G‑Secs yield 6% coupon annually and a haircut of 3%. IM:MTM ratio is 80:20 <br> If FPI wants to take a derivatives position of INR 100 crores <br> FPI will provide INR 103.09 (100/0.97) crore worth of G-Secs as IM and 25 crores of cash as MTM <br> FPI will earn an additional income of INR 6.2 crores as compared to providing entire IM:MTM in cash</div>
-
+      <div class="legend">
+        <div class="item"><span class="sw" style="background:var(--gsec)"></span>IM — G-Secs</div>
+        <div class="item"><span class="sw" style="background:var(--cash)"></span>MTM — Cash</div>
+      </div>
+      
     </section>
 
-    <footer>
-      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-        <div>Prepared by: <strong>Tarun Agarwal</strong></div>
-        <div>Contact: <a href="tarun.agarwal@dovetailindia.com" style="color:var(--accent)">tarun.agarwal@dovetailindia.com</a></div>
+    <section class="card controls">
+      <div>
+        <label>IM percentage</label>
+        <div class="range-wrap">
+          <input id="imRange" type="range" min="50" max="90" value="80">
+          <div id="imPercent" class="big">90%</div>
+        </div>
       </div>
+
+      <div>
+        <label>Derivative Exposure (USD)</label>
+        <input id="principal" type="number" value="1000000" step="1000">
+      </div>
+
+      <div>
+        <label>G-Sec coupon (annual %)</label>
+        <input id="coupon" type="number" value="6" step="0.1">
+      </div>
+
+	<div>
+        <label>Haircut (%)</label>
+        <input id="haircut" type="number" value="0" step="0.1">
+      </div>
+
+      <div>
+        <div class="small muted">Annual coupon income </div>
+        <div id="couponIncome" class="big">$54,000</div>
+      </div>
+
+      <div>
+        <div class="small muted">MTM (cash portion)</div>
+        <div id="mtmValue" class="big">$250,000</div>
+      </div>
+
+	<div>
+        <div class="small muted">IM (G-secs portion)</div>
+        <div id="imValue" class="big">$1,000,000</div>
+      </div>
+    </section>
+
+
+
+	
+
+
+
+    <footer>
+      Created by <strong>Tarun Agarwal</strong> for educational and illustrative purposes.
     </footer>
   </div>
+
+  <script>
+    (function(){
+      const imRange=document.getElementById('imRange'),imLabel=document.getElementById('imPercent'),
+      ratio=document.getElementById('ratioLabel'),imArc=document.getElementById('imArc'),
+      mtmArc=document.getElementById('mtmArc'),principal=document.getElementById('principal'),
+      coupon=document.getElementById('coupon'),couponIncome=document.getElementById('couponIncome'), haircut=document.getElementById('haircut'),
+      mtmValue=document.getElementById('mtmValue'),btn=document.getElementById('simAirdrop');
+      const r=70,circ=2*Math.PI*r;
+      function updateArcs(p){
+        const f=p/100,mf=1-f,paintIM=circ*f,gapIM=circ-paintIM,paintM=circ*mf,gapM=circ-paintM;
+        imArc.setAttribute('stroke-dasharray',`${paintIM} ${gapIM}`);
+        mtmArc.setAttribute('stroke-dasharray',`${paintM} ${gapM}`);
+        mtmArc.setAttribute('stroke-dashoffset',-paintIM);
+        ratio.textContent=`${p} : ${100-p}`;
+      }
+      function updateCalc(){
+        const im=parseFloat(imRange.value),pr=+principal.value||0,c=+coupon.value||0, d=+haircut.value||0;
+        const imAmt=pr*(100/(100-d)),mtmAmt=pr*((100-im)/im),income=imAmt*(c/100);
+        couponIncome.textContent=`$${income.toLocaleString()}`;
+        mtmValue.textContent=`$${mtmAmt.toLocaleString()}`; 	imValue.textContent=`$${imAmt.toLocaleString()}`;
+      }
+      imRange.addEventListener('input',()=>{imLabel.textContent=`${imRange.value}%`;updateArcs(+imRange.value);updateCalc()});
+      [principal,coupon,haircut].forEach(el=>el.addEventListener('input',updateCalc));
+      btn.addEventListener('click',()=>{btn.textContent='Claimed ✓';btn.disabled=true;alert('Demo only — 25 ClearTokens simulated for engagement.')});
+      updateArcs(+imRange.value);updateCalc();
+    })();
+  </script>
 </body>
 </html>
